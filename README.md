@@ -40,7 +40,7 @@ The following **required** functionality is completed:
 
 8\. Identify the Double Agent
   * [x]  Required: Decrypt as many email messages as possible
-  * [x]  Required: Identify the double agent: _natasha___________________
+  * [x]  Required: Identify the double agent: natasha
 
 The following objectives are **optional**:
 

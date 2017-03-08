@@ -45,19 +45,20 @@
       <?php while($message = db_fetch_assoc($message_result)) { ?>
         <?php
           $created_at = strtotime($message['created_at']);
-          $sender['codename'] = $message['sender_id'];
+        //  $id = $message['sender_id'];
+          $send_agent_result = find_agent_by_id($message['sender_id']);
+          $send_agent = db_fetch_assoc($send_agent_result);
+          $sender['codename'] = $send_agent['codename'];
           if($current_user['id'] == $agent['id'])
           {
-            $message_text = pkey_decrypt($message['cipher_text'],$current_user['private_key']);
+            $message_text = pkey_decrypt($message['cipher_text'],$agent['private_key']);
           }else if($current_user['id'] != $agent['id']){
             $message_text = $message['cipher_text'];
           }
-          $validity_text = verify_signature($message['cipher_text'],$message['signature'],$agent['public_key']);
-        //  $validity_text = $result === 1 ? 'Valid' : 'Not valid';
-          // Oooops.
-          // My finger accidentally hit the delete-key.
-          // Sorry, APEX!!!
-
+          $result = verify_signature($message['cipher_text'],
+                                     $message['signature'],$send_agent['public_key']);
+          $validity_text = $result === 1 ? 'Valid' : 'Not valid';
+      
         ?>
         <tr>
           <td><?php echo h(strftime('%b %d, %Y at %H:%M', $created_at)); ?></td>

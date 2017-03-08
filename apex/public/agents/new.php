@@ -8,23 +8,23 @@
 
   if(isset($_POST['submit'])) {
 
-    $codename = $_POST['codename'] ? $_POST['codename'] : '';
-    $public_key = $_POST['public_key'] ? $_POST['public_key'] : '';
-    $private_key = $_POST['private_key'] ? $_POST['private_key'] : '';
-    
+    $codename = $_POST['codename'] ? h($_POST['codename']) : '';
+    $public_key = $_POST['public_key'] ? h($_POST['public_key']) : '';
+    $private_key = $_POST['private_key'] ? h($_POST['private_key']) : '';
+
     $agent = [
       'codename' => $codename,
       'public_key' => $public_key,
       'private_key' => $private_key
     ];
-    
+
     $result = insert_agent($agent);
     if($result === true) {
       redirect_to('index.php');
     } else {
       $errors = $result;
     }
-  
+
   }
 
 ?>
@@ -39,14 +39,14 @@
     <link rel="stylesheet" media="all" href="<?php echo DOC_ROOT . '/includes/styles.css'; ?>" />
   </head>
   <body>
-    
+
     <a href="<?php echo url_for('/agents/index.php') ?>">Back to List</a>
     <br/>
 
     <h1>New Agent</h1>
-    
+         <?php echo display_errors($errors); ?>
     <div>
-      
+
       <form action="" method="post">
         <div>
           <label for="codename">Codename</label>
@@ -64,8 +64,8 @@
           <input type="submit" name="submit" value="Submit">
         </div>
       </form>
-    
+
     </div>
-    
+
   </body>
 </html>

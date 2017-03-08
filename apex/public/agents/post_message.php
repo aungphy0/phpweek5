@@ -10,12 +10,11 @@
     $id = $_GET['id'];
     $agent_result = find_agent_by_id($id);
     $agent = db_fetch_assoc($agent_result);
-    // I'm sorry, did you need this code? ;)
-    // Guess you'll just have to re-write it.
-    // With love, Dark Shadow
     $sender['id'] = $current_user['id'];
-    $encrypted_text = pkey_encrypt($_POST['plain_text'],$agent['public_key']);
-    $signature = create_signature($encrypted_text, $current_user['private_key']);
+    $encrypted_text = pkey_encrypt(h($_POST['plain_text']),$agent['public_key']);
+    $sender_agent_result = find_agent_by_id($current_user['id']);
+    $sender_agent = db_fetch_assoc($sender_agent_result);
+    $signature = create_signature($encrypted_text, $sender_agent['private_key']);
 
     $message = [
       'sender_id' => $sender['id'],

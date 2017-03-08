@@ -5,12 +5,12 @@
 ob_start();
 
 // Enable sessions
-session_start();
-// session_start([
-//   'use_only_cookies' => 1,
-//   'cookie_lifetime' => (60 * 60 * 24 * 1),
-//   'cookie_httponly' => 1
-// ]);
+//session_start();
+  session_start([
+   'use_only_cookies' => 1,
+   'cookie_lifetime' => (60 * 60 * 24 * 1),
+   'cookie_httponly' => 1
+ ]);
 
 // Turns off any browser built-in XSS protections
 // LEAVE THIS LINE IN WHILE YOU ARE LEARNING

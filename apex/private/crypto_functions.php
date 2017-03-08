@@ -76,7 +76,8 @@ function create_signature($data, $private_key) {
 function verify_signature($data, $signature, $public_key) {
   // Vigenère
   //return 'RK, pym oays onicvr. Iuw bkzhvbw uedf pke conll rt ZV nzxbhz.';
-  return openssl_verify($data, base64_decode($signature), $public_key);
+  $raw_signature = base64_decode($signature);
+  return openssl_verify($data, $raw_signature, $public_key);
 
   $modified_data = $data . "extra content";
   return openssl_verify($modified_data, $signature, $public_key);

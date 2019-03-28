@@ -1,7 +1,7 @@
 # phpweek5
 # Project 5 - Encryption
 
-Time spent: 46 hours spent in total
+Time spent: 4.5 hours spent in total
 
 ## User Stories
 
@@ -14,7 +14,7 @@ The following **required** functionality is completed:
   * [x]  Required: Decrypt the government message
   * [x]  Required: Encrypt a response and include in this README
      //respeonse message 1     dLismsMSmGFdE1WlYaEnd19LV35RlrFLDDnabfn610KhRoSYr+LDI7vbH+lnmQi1opA8I+4UnqdsuZe7fmKPEbymqVXIRNp6v0OrEtEP0+lRDV0IcLfv49Ik4ZuPgGe6
-     
+
 3\. Generate Public-Private Keys
   * [x]  Required: Repair the key generator code
   * [x]  Required: Generate keys for "johnsteed" and add him to the Agent Directory
@@ -24,7 +24,7 @@ The following **required** functionality is completed:
 
 5\. Create/Verify Signature
   * [x]  Required: Repair the create and verify signature code
-  
+
 6\. Encrypted Message 2
   * [x]  Required: Decrypt the message
   * [x]  Required: Verify the message
